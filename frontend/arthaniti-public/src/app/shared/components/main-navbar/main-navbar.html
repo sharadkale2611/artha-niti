@@ -1,3 +1,4 @@
+
 <nav class="navbar navbar-expand-lg main-navbar">
 
   <div class="container">
@@ -7,7 +8,8 @@
       class="navbar-brand d-lg-none"
       routerLink="/">
 
-      Malegaon Nagar Panchayat
+      <i class="bi bi-calculator me-2"></i>
+      ArthaNiti
 
     </a>
 
@@ -34,8 +36,8 @@
 
       <ul class="navbar-nav me-auto">
 
+        <!-- Home -->
         <li class="nav-item">
-
           <a
             class="nav-link"
             routerLink="/"
@@ -46,105 +48,87 @@
             Home
 
           </a>
-
         </li>
 
 
+        <!-- About -->
         <li class="nav-item">
-
           <a
             class="nav-link"
             routerLink="/about"
             routerLinkActive="active">
 
+            <i class="bi bi-info-circle me-1"></i>
             About Us
 
           </a>
-
         </li>
 
 
+        <!-- Services -->
         <li class="nav-item">
-
           <a
             class="nav-link"
             routerLink="/services"
             routerLinkActive="active">
 
-            Citizen Services
+            <i class="bi bi-grid me-1"></i>
+            Our Services
 
           </a>
-
         </li>
 
 
+        <!-- Accounting -->
         <li class="nav-item">
-
           <a
             class="nav-link"
-            routerLink="/departments"
+            routerLink="/services/accounting"
             routerLinkActive="active">
 
-            Departments
+            Accounting
 
           </a>
-
         </li>
 
 
+        <!-- GST -->
         <li class="nav-item">
-
           <a
             class="nav-link"
-            routerLink="/complaints"
+            routerLink="/services/gst"
             routerLinkActive="active">
 
-            Complaints
+            GST Services
 
           </a>
-
         </li>
 
 
+        <!-- Income Tax -->
         <li class="nav-item">
-
           <a
             class="nav-link"
-            routerLink="/notices"
+            routerLink="/services/income-tax"
             routerLinkActive="active">
 
-            Notices
+            Income Tax
 
           </a>
-
         </li>
 
 
+        <!-- Contact -->
         <li class="nav-item">
-
-          <a
-            class="nav-link"
-            routerLink="/downloads"
-            routerLinkActive="active">
-
-            Downloads
-
-          </a>
-
-        </li>
-
-
-        <li class="nav-item">
-
           <a
             class="nav-link"
             routerLink="/contact"
             routerLinkActive="active">
 
+            <i class="bi bi-telephone me-1"></i>
             Contact
 
           </a>
-
         </li>
 
       </ul>
@@ -157,7 +141,8 @@
           routerLink="/login"
           class="btn btn-outline-light w-100 mb-2">
 
-          Citizen Login
+          <i class="bi bi-box-arrow-in-right me-2"></i>
+          Login
 
         </a>
 
@@ -165,7 +150,8 @@
           routerLink="/register"
           class="btn btn-light w-100">
 
-          Register
+          <i class="bi bi-person-plus me-2"></i>
+          Get Started
 
         </a>
 
