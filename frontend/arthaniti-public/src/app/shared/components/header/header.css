@@ -1,0 +1,87 @@
+.top-bar {
+  background-color: #f5f5f5;
+  border-bottom: 1px solid #e0e0e0;
+  color: #444;
+}
+
+.top-link {
+  color: #333;
+  text-decoration: none;
+}
+
+.top-link:hover {
+  color: #0d6efd;
+}
+
+.accessibility-separator {
+  width: 1px;
+  height: 18px;
+  background-color: #ccc;
+}
+
+.accessibility-btn {
+  border: 1px solid #ccc;
+  background: #ffffff;
+  color: #333;
+  min-width: 32px;
+  height: 28px;
+  border-radius: 3px;
+  font-size: 12px;
+}
+
+.accessibility-btn:hover {
+  background-color: #e9ecef;
+}
+
+.identity-header {
+  background-color: #ffffff;
+}
+
+.municipality-logo {
+  width: 72px;
+  height: 72px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 2px solid #0d6efd;
+  border-radius: 50%;
+
+  color: #0d6efd;
+  font-size: 2rem;
+}
+
+.municipality-name {
+  font-size: 1.65rem;
+  font-weight: 700;
+  color: #17365d;
+  text-transform: uppercase;
+}
+
+.municipality-subtitle {
+  color: #6c757d;
+  margin-top: 2px;
+}
+
+@media (max-width: 767.98px) {
+
+  .top-bar {
+    font-size: 12px;
+  }
+
+  .municipality-name {
+    font-size: 1.15rem;
+  }
+
+  .municipality-subtitle {
+    font-size: 0.85rem;
+  }
+
+  .municipality-logo {
+    width: 52px;
+    height: 52px;
+    font-size: 1.5rem;
+  }
+
+}

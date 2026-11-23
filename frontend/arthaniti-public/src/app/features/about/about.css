@@ -1,0 +1,324 @@
+.about-page {
+  background-color: #ffffff;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.about-hero {
+  background: linear-gradient(
+    135deg,
+    #0d6efd,
+    #17365d
+  );
+  color: #ffffff;
+  padding: 70px 0;
+}
+
+.about-hero-content {
+  max-width: 800px;
+}
+
+.about-label,
+.section-label {
+  display: inline-block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+
+.about-label {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.about-hero h1 {
+  font-size: 2.7rem;
+  font-weight: 700;
+  margin-bottom: 18px;
+}
+
+.about-hero p {
+  max-width: 700px;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin-bottom: 0;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+
+/* =========================
+   ABOUT SECTION
+========================= */
+
+.about-section {
+  padding: 75px 0;
+}
+
+.section-label {
+  color: #0d6efd;
+}
+
+.about-section h2 {
+  color: #17365d;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.about-section p {
+  color: #6c757d;
+  line-height: 1.8;
+  margin-bottom: 15px;
+}
+
+
+/* =========================
+   HIGHLIGHT
+========================= */
+
+.about-highlight {
+  padding: 35px;
+  background-color: #f8f9fa;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.highlight-icon {
+  width: 70px;
+  height: 70px;
+  margin: 0 auto 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: #eaf2ff;
+  color: #0d6efd;
+
+  border-radius: 50%;
+  font-size: 2rem;
+}
+
+.about-highlight h3 {
+  color: #17365d;
+  font-size: 1.35rem;
+  font-weight: 700;
+}
+
+.about-highlight p {
+  margin-bottom: 0;
+}
+
+
+/* =========================
+   VISION & MISSION
+========================= */
+
+.vision-mission-section {
+  padding: 75px 0;
+  background-color: #f8f9fa;
+}
+
+.section-heading {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.section-heading h2 {
+  color: #17365d;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.section-heading p {
+  color: #6c757d;
+  margin-bottom: 0;
+}
+
+
+.purpose-card {
+  height: 100%;
+  display: flex;
+  gap: 20px;
+
+  background-color: #ffffff;
+  padding: 30px;
+
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.purpose-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.purpose-icon {
+  min-width: 55px;
+  width: 55px;
+  height: 55px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: #eaf2ff;
+  color: #0d6efd;
+
+  border-radius: 10px;
+
+  font-size: 1.5rem;
+}
+
+.purpose-card h3 {
+  color: #17365d;
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.purpose-card p {
+  color: #6c757d;
+  line-height: 1.7;
+  margin-bottom: 0;
+}
+
+
+/* =========================
+   RESPONSIBILITIES
+========================= */
+
+.responsibilities-section {
+  padding: 75px 0;
+  background-color: #ffffff;
+}
+
+.responsibility-card {
+  height: 100%;
+  padding: 30px;
+
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+
+  background-color: #ffffff;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.responsibility-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.responsibility-card > i {
+  display: inline-flex;
+
+  width: 55px;
+  height: 55px;
+
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 18px;
+
+  background-color: #eaf2ff;
+  color: #0d6efd;
+
+  border-radius: 10px;
+
+  font-size: 1.5rem;
+}
+
+.responsibility-card h3 {
+  color: #17365d;
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.responsibility-card p {
+  color: #6c757d;
+  line-height: 1.7;
+  margin-bottom: 0;
+}
+
+
+/* =========================
+   CITIZEN FIRST
+========================= */
+
+.citizen-first-section {
+  padding: 65px 0;
+  background-color: #f8f9fa;
+}
+
+.citizen-first-content {
+  max-width: 750px;
+  margin: 0 auto;
+}
+
+.citizen-first-content > i {
+  font-size: 2.5rem;
+  color: #0d6efd;
+}
+
+.citizen-first-content h2 {
+  color: #17365d;
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 15px 0 10px;
+}
+
+.citizen-first-content p {
+  color: #6c757d;
+  line-height: 1.8;
+  margin-bottom: 0;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 767.98px) {
+
+  .about-hero {
+    padding: 50px 0;
+  }
+
+  .about-hero h1 {
+    font-size: 2rem;
+  }
+
+  .about-hero p {
+    font-size: 0.95rem;
+  }
+
+  .about-section,
+  .vision-mission-section,
+  .responsibilities-section {
+    padding: 55px 0;
+  }
+
+  .about-section h2,
+  .section-heading h2 {
+    font-size: 1.7rem;
+  }
+
+  .purpose-card {
+    padding: 25px;
+  }
+
+  .about-highlight {
+    padding: 30px 20px;
+  }
+
+}

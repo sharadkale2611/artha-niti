@@ -1,0 +1,32 @@
+.main-navbar {
+  background-color: #0d6efd;
+}
+
+.main-navbar .nav-link {
+  color: rgba(255, 255, 255, 0.9);
+  padding: 0.85rem 1rem;
+  font-weight: 500;
+}
+
+.main-navbar .nav-link:hover {
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.main-navbar .nav-link.active {
+  color: #ffffff;
+  background-color: rgba(0, 0, 0, 0.15);
+}
+
+.main-navbar .navbar-toggler {
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.main-navbar .navbar-toggler:focus {
+  box-shadow: none;
+}
+
+.main-navbar .navbar-brand {
+  color: #ffffff;
+  font-weight: 600;
+}

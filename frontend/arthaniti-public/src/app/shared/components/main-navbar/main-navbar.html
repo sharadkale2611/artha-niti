@@ -1,0 +1,178 @@
+<nav class="navbar navbar-expand-lg main-navbar">
+
+  <div class="container">
+
+    <!-- Mobile Brand -->
+    <a
+      class="navbar-brand d-lg-none"
+      routerLink="/">
+
+      Malegaon Nagar Panchayat
+
+    </a>
+
+
+    <!-- Mobile Toggle -->
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#mainNavbar"
+      aria-controls="mainNavbar"
+      aria-expanded="false"
+      aria-label="Toggle navigation">
+
+      <span class="navbar-toggler-icon"></span>
+
+    </button>
+
+
+    <!-- Navigation -->
+    <div
+      class="collapse navbar-collapse"
+      id="mainNavbar">
+
+      <ul class="navbar-nav me-auto">
+
+        <li class="nav-item">
+
+          <a
+            class="nav-link"
+            routerLink="/"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }">
+
+            <i class="bi bi-house-door me-1"></i>
+            Home
+
+          </a>
+
+        </li>
+
+
+        <li class="nav-item">
+
+          <a
+            class="nav-link"
+            routerLink="/about"
+            routerLinkActive="active">
+
+            About Us
+
+          </a>
+
+        </li>
+
+
+        <li class="nav-item">
+
+          <a
+            class="nav-link"
+            routerLink="/services"
+            routerLinkActive="active">
+
+            Citizen Services
+
+          </a>
+
+        </li>
+
+
+        <li class="nav-item">
+
+          <a
+            class="nav-link"
+            routerLink="/departments"
+            routerLinkActive="active">
+
+            Departments
+
+          </a>
+
+        </li>
+
+
+        <li class="nav-item">
+
+          <a
+            class="nav-link"
+            routerLink="/complaints"
+            routerLinkActive="active">
+
+            Complaints
+
+          </a>
+
+        </li>
+
+
+        <li class="nav-item">
+
+          <a
+            class="nav-link"
+            routerLink="/notices"
+            routerLinkActive="active">
+
+            Notices
+
+          </a>
+
+        </li>
+
+
+        <li class="nav-item">
+
+          <a
+            class="nav-link"
+            routerLink="/downloads"
+            routerLinkActive="active">
+
+            Downloads
+
+          </a>
+
+        </li>
+
+
+        <li class="nav-item">
+
+          <a
+            class="nav-link"
+            routerLink="/contact"
+            routerLinkActive="active">
+
+            Contact
+
+          </a>
+
+        </li>
+
+      </ul>
+
+
+      <!-- Mobile Login -->
+      <div class="d-lg-none border-top mt-2 pt-3">
+
+        <a
+          routerLink="/login"
+          class="btn btn-outline-light w-100 mb-2">
+
+          Citizen Login
+
+        </a>
+
+        <a
+          routerLink="/register"
+          class="btn btn-light w-100">
+
+          Register
+
+        </a>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</nav>

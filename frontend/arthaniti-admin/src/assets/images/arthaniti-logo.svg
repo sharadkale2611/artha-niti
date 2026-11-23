@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-labelledby="title desc">
+  <title id="title">ArthaNiti</title>
+  <desc id="desc">A unique ArthaNiti monogram shaped from an A and rising financial bars</desc>
+  <rect width="96" height="96" rx="24" fill="#1685E5"/>
+  <circle cx="48" cy="48" r="37" fill="none" stroke="#F0A33A" stroke-width="2"/>
+  <path d="M24 68L43 27H53L72 68H61L57 58H39L35 68H24ZM43 48H53L48 36L43 48Z" fill="#FFFFFF"/>
+  <path d="M39 68V61H57V68H39Z" fill="#1F7A8C"/>
+  <path d="M55 24H66V35" fill="none" stroke="#F0A33A" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M55 34L66 23" fill="none" stroke="#F0A33A" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="68" cy="21" r="4" fill="#F0A33A"/>
+</svg>

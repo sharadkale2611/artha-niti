@@ -1,0 +1,19 @@
+{
+  "waterBilling": {
+    "title": "पाणी बिलिंग",
+    "overview": "आढावा",
+    "waterConsumers": "पाणी ग्राहक",
+    "waterConnections": "पाणी जोडण्या",
+    "consumerDocuments": "ग्राहकांची कागदपत्रे",
+    "waterTariffs": "पाणी दर",
+    "billingPeriods": "बिलिंग कालावधी",
+    "meterReadings": "मीटर रीडिंग",
+    "waterBills": "पाणी बिले",
+    "billAdjustments": "बिल समायोजन",
+    "waterPayments": "पाणी देयके",
+    "paymentAllocations": "पेमेंट वाटप",
+    "waterReceipts": "पाणी पावत्या",
+    "notificationLogs": "सूचना नोंदी",
+    "waterAuditLogs": "पाणी ऑडिट नोंदी"
+  }
+}

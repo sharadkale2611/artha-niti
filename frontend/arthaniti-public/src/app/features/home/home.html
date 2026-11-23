@@ -1,0 +1,691 @@
+<section class="hero-section">
+
+  <div class="container">
+
+    <div class="row align-items-center">
+
+      <!-- Hero Content -->
+      <div class="col-lg-7">
+
+        <span class="hero-badge">
+          Malegaon Nagar Panchayat
+        </span>
+
+        <h1 class="hero-title">
+          Welcome to Malegaon Nagar Panchayat
+        </h1>
+
+        <p class="hero-description">
+          Your digital gateway to municipal services,
+          citizen facilities and important civic information.
+        </p>
+
+        <div class="hero-actions">
+
+          <a
+            routerLink="/services"
+            class="btn btn-light btn-lg">
+
+            <i class="bi bi-grid me-2"></i>
+            Citizen Services
+
+          </a>
+
+          <a
+            routerLink="/complaints/register"
+            class="btn btn-outline-light btn-lg">
+
+            <i class="bi bi-exclamation-circle me-2"></i>
+            Register Complaint
+
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <!-- Hero Illustration -->
+      <div class="col-lg-5 d-none d-lg-flex justify-content-center">
+
+        <div class="hero-icon">
+
+          <i class="bi bi-building"></i>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<section class="quick-services py-5">
+
+  <div class="container">
+
+    <div class="text-center mb-5">
+
+  <span class="text-primary fw-semibold">
+    QUICK ACCESS
+  </span>
+
+  <app-section-title
+    title="Citizen Services"
+    subtitle="Access frequently used municipal services">
+  </app-section-title>
+
+</div>
+
+
+    <div class="row g-4">
+
+      <!-- Property Tax -->
+      <div class="col-6 col-md-4 col-lg-3">
+
+        <a
+          routerLink="/services/property-tax"
+          class="quick-service-card">
+
+          <div class="quick-service-icon">
+            <i class="bi bi-house-door"></i>
+          </div>
+
+          <h5>
+            Property Tax
+          </h5>
+
+          <p>
+            Property tax related services
+          </p>
+
+        </a>
+
+      </div>
+
+
+      <!-- Water -->
+      <div class="col-6 col-md-4 col-lg-3">
+
+        <a
+          routerLink="/services/water"
+          class="quick-service-card">
+
+          <div class="quick-service-icon">
+            <i class="bi bi-droplet"></i>
+          </div>
+
+          <h5>
+            Water Services
+          </h5>
+
+          <p>
+            Water supply and bill services
+          </p>
+
+        </a>
+
+      </div>
+
+
+      <!-- Complaints -->
+      <div class="col-6 col-md-4 col-lg-3">
+
+        <a
+          routerLink="/complaints/register"
+          class="quick-service-card">
+
+          <div class="quick-service-icon">
+            <i class="bi bi-exclamation-circle"></i>
+          </div>
+
+          <h5>
+            Register Complaint
+          </h5>
+
+          <p>
+            Submit a municipal complaint
+          </p>
+
+        </a>
+
+      </div>
+
+
+      <!-- Notices -->
+      <div class="col-6 col-md-4 col-lg-3">
+
+        <a
+          routerLink="/notices"
+          class="quick-service-card">
+
+          <div class="quick-service-icon">
+            <i class="bi bi-megaphone"></i>
+          </div>
+
+          <h5>
+            Notices
+          </h5>
+
+          <p>
+            View latest municipal notices
+          </p>
+
+        </a>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================
+     ONLINE CITIZEN SERVICES
+     ========================================= -->
+
+<section class="py-5">
+
+  <div class="container">
+
+    <div class="text-center mb-5">
+
+      <span class="text-primary fw-semibold">
+        ONLINE SERVICES
+      </span>
+
+      <app-section-title
+        title="Municipal Services"
+        subtitle="Access municipal services conveniently from anywhere">
+      </app-section-title>
+
+    </div>
+
+    <div class="row g-4">
+
+      <!-- Property Tax -->
+      <div class="col-md-6 col-lg-4">
+
+        <div class="service-panel-card">
+
+          <div class="service-panel-icon">
+            <i class="bi bi-house-door"></i>
+          </div>
+
+          <div class="service-panel-content">
+
+            <h5>
+              Property Tax
+            </h5>
+
+            <p>
+              Access property tax information,
+              dues and available services.
+            </p>
+
+            <a
+              routerLink="/services/property-tax"
+              class="btn btn-sm btn-outline-primary">
+
+              View Service
+              <i class="bi bi-arrow-right ms-1"></i>
+
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- Water Services -->
+      <div class="col-md-6 col-lg-4">
+
+        <div class="service-panel-card">
+
+          <div class="service-panel-icon">
+            <i class="bi bi-droplet"></i>
+          </div>
+
+          <div class="service-panel-content">
+
+            <h5>
+              Water Services
+            </h5>
+
+            <p>
+              Access water supply information,
+              bills and related services.
+            </p>
+
+            <a
+              routerLink="/services/water"
+              class="btn btn-sm btn-outline-primary">
+
+              View Service
+              <i class="bi bi-arrow-right ms-1"></i>
+
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- Certificates -->
+      <div class="col-md-6 col-lg-4">
+
+        <div class="service-panel-card">
+
+          <div class="service-panel-icon">
+            <i class="bi bi-file-earmark-text"></i>
+          </div>
+
+          <div class="service-panel-content">
+
+            <h5>
+              Certificates & Documents
+            </h5>
+
+            <p>
+              Access available municipal forms,
+              certificates and documents.
+            </p>
+
+            <a
+              routerLink="/downloads"
+              class="btn btn-sm btn-outline-primary">
+
+              View Documents
+              <i class="bi bi-arrow-right ms-1"></i>
+
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- Applications -->
+      <div class="col-md-6 col-lg-4">
+
+        <div class="service-panel-card">
+
+          <div class="service-panel-icon">
+            <i class="bi bi-file-earmark-check"></i>
+          </div>
+
+          <div class="service-panel-content">
+
+            <h5>
+              Applications
+            </h5>
+
+            <p>
+              Submit and track eligible municipal
+              applications online.
+            </p>
+
+            <a
+              routerLink="/services"
+              class="btn btn-sm btn-outline-primary">
+
+              View Services
+              <i class="bi bi-arrow-right ms-1"></i>
+
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- Notices -->
+      <div class="col-md-6 col-lg-4">
+
+        <div class="service-panel-card">
+
+          <div class="service-panel-icon">
+            <i class="bi bi-megaphone"></i>
+          </div>
+
+          <div class="service-panel-content">
+
+            <h5>
+              Notices & Announcements
+            </h5>
+
+            <p>
+              View important announcements and
+              municipal notices.
+            </p>
+
+            <a
+              routerLink="/notices"
+              class="btn btn-sm btn-outline-primary">
+
+              View Notices
+              <i class="bi bi-arrow-right ms-1"></i>
+
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- Downloads -->
+      <div class="col-md-6 col-lg-4">
+
+        <div class="service-panel-card">
+
+          <div class="service-panel-icon">
+            <i class="bi bi-download"></i>
+          </div>
+
+          <div class="service-panel-content">
+
+            <h5>
+              Downloads
+            </h5>
+
+            <p>
+              Download approved forms, documents
+              and municipal information.
+            </p>
+
+            <a
+              routerLink="/downloads"
+              class="btn btn-sm btn-outline-primary">
+
+              Download
+              <i class="bi bi-arrow-right ms-1"></i>
+
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================
+     COMPLAINT SERVICES
+     ========================================= -->
+
+<section class="complaint-section py-5">
+
+  <div class="container">
+
+    <div class="row align-items-center g-5">
+
+      <!-- Left Content -->
+      <div class="col-lg-6">
+
+        <span class="text-primary fw-semibold">
+          CITIZEN SUPPORT
+        </span>
+
+        <h2 class="fw-bold mt-2">
+          Register & Track Your Complaint
+        </h2>
+
+        <p class="text-muted mt-3">
+          Register a municipal complaint online and
+          track its progress using your complaint number.
+        </p>
+
+
+        <div class="d-flex flex-wrap gap-2 mt-4">
+
+          <a
+            routerLink="/complaints/register"
+            class="btn btn-primary">
+
+            <i class="bi bi-plus-circle me-2"></i>
+
+            Register Complaint
+
+          </a>
+
+          <a
+            routerLink="/complaints/track"
+            class="btn btn-outline-primary">
+
+            <i class="bi bi-search me-2"></i>
+
+            Track Complaint
+
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <!-- Right Process -->
+      <div class="col-lg-6">
+
+        <div class="complaint-process-card">
+
+          <div class="process-step">
+
+            <div class="process-number">
+              1
+            </div>
+
+            <div>
+              <h6>Submit Complaint</h6>
+
+              <p>
+                Select the relevant department
+                and submit your complaint.
+              </p>
+            </div>
+
+          </div>
+
+
+          <div class="process-line"></div>
+
+
+          <div class="process-step">
+
+            <div class="process-number">
+              2
+            </div>
+
+            <div>
+              <h6>Receive Reference Number</h6>
+
+              <p>
+                Receive a unique complaint number
+                for future tracking.
+              </p>
+            </div>
+
+          </div>
+
+
+          <div class="process-line"></div>
+
+
+          <div class="process-step">
+
+            <div class="process-number">
+              3
+            </div>
+
+            <div>
+              <h6>Track Progress</h6>
+
+              <p>
+                Check whether your complaint is
+                submitted, assigned or in progress.
+              </p>
+            </div>
+
+          </div>
+
+
+          <div class="process-line"></div>
+
+
+          <div class="process-step">
+
+            <div class="process-number">
+              4
+            </div>
+
+            <div>
+              <h6>Resolution & Feedback</h6>
+
+              <p>
+                View resolution status and provide
+                feedback where applicable.
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================
+     LATEST NOTICES
+     ========================================= -->
+
+<section class="py-5">
+
+  <div class="container">
+
+    <div class="row g-5">
+
+      <!-- Notices -->
+      <div class="col-lg-8">
+
+        <div class="d-flex justify-content-between align-items-center mb-4">
+
+          <div>
+
+            <span class="text-primary fw-semibold">
+              INFORMATION
+            </span>
+
+            <h2 class="fw-bold mt-1 mb-0">
+              Latest Notices
+            </h2>
+
+          </div>
+
+          <a
+            routerLink="/notices"
+            class="btn btn-sm btn-outline-primary">
+
+            View All
+
+          </a>
+
+        </div>
+
+
+        <div class="notice-list">
+
+          <app-notice-card
+            date="06 OCT"
+            title="Important Municipal Notice"
+            description="Important information for citizens.">
+          </app-notice-card>
+
+
+          <app-notice-card
+            date="02 OCT"
+            title="Citizen Service Update"
+            description="Information regarding municipal services.">
+          </app-notice-card>
+
+
+          <app-notice-card
+            date="28 SEP"
+            title="Public Information"
+            description="Latest information from Malegaon Nagar Panchayat.">
+          </app-notice-card>
+
+
+          <app-notice-card
+            date="25 SEP"
+            title="Important Announcement"
+            description="Please read the latest municipal announcement.">
+          </app-notice-card>
+
+        </div>
+
+      </div>
+
+
+      <!-- Announcement -->
+      <div class="col-lg-4">
+
+        <div class="announcement-card">
+
+          <div class="announcement-icon">
+
+            <i class="bi bi-megaphone"></i>
+
+          </div>
+
+          <h4 class="fw-bold mt-4">
+            Important Announcements
+          </h4>
+
+          <p class="text-muted">
+            Stay informed about important municipal
+            announcements, services and citizen updates.
+          </p>
+
+          <a
+            routerLink="/notices"
+            class="btn btn-primary mt-2">
+
+            View Announcements
+
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>

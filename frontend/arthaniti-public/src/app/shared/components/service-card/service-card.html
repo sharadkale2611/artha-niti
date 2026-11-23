@@ -1,0 +1,21 @@
+<div class="card service-card h-100 border-0 shadow-sm">
+
+  <div class="card-body text-center p-4">
+
+    <div class="service-icon mb-3">
+      <i [class]="icon()"></i>
+    </div>
+
+    <h5 class="fw-semibold">
+      {{ title() }}
+    </h5>
+
+    @if (description()) {
+      <p class="text-muted small mb-0">
+        {{ description() }}
+      </p>
+    }
+
+  </div>
+
+</div>

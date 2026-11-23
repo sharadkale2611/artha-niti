@@ -1,0 +1,21 @@
+<lte-dashboard-layout
+  [menuItems]="menu"
+  [user]="user"
+  logo="assets/images/arthaniti-logo.svg"
+  brandText="ArthaNiti"
+  [currentPath]="currentPath()"
+  [accordion]="true"
+  [fixedHeader]="true"
+  [layoutFixed]="true"
+  [enableSidebarPersistence]="false"
+  sidebarClass="bg-body-secondary shadow arthaniti-sidebar"
+  sidebarTheme="dark"
+  (logout)="onLogout()"
+>
+  <router-outlet></router-outlet>
+
+  <span footer>
+    <strong>ArthaNiti CA Portal</strong>
+    © 2026 All Rights Reserved.
+  </span>
+</lte-dashboard-layout>

@@ -1,0 +1,229 @@
+// Include theming for Angular Material with `mat.theme()`.
+// This Sass mixin will define CSS variables that are used for styling Angular Material
+// components according to the Material 3 design spec.
+// Learn more about theming and how to use it for your application's
+// custom components at https://material.angular.dev/guide/theming
+@use '@angular/material' as mat;
+@use 'app/shared/ui';
+@use 'app/shared/master-data';
+
+@import '@ng-select/ng-select/themes/default.theme.css';
+
+:root {
+  --brand-primary: #1685e5;
+  --brand-primary-hover: #0b6fc4;
+  --brand-secondary: #16a982;
+  --brand-accent: #f0a33a;
+  --brand-gold-light: #f6c875;
+  --brand-red: #df5365;
+  --brand-cream: #eaf4ff;
+  --brand-ivory: #ffffff;
+  --app-background: #f5f7fb;
+  --surface-primary: #fff;
+  --surface-secondary: #f1f5f9;
+  --surface-sidebar: #ffffff;
+  --surface-sidebar-active: #e8f3ff;
+  --text-primary: #202b3c;
+  --text-secondary: #667085;
+  --text-muted: #98a2b3;
+  --text-on-primary: #fff;
+  --text-on-accent: #ffffff;
+  --border-default: #e4e9f0;
+  --border-strong: #cbd5e1;
+  --success: #16a982;
+  --warning: #f0a33a;
+  --danger: #df5365;
+  --info: #1685e5;
+  --sidebar-width: 260px;
+  --topbar-height: 60px;
+  --radius-sm: 6px;
+  --radius-md: 9px;
+  --radius-lg: 12px;
+  --shadow-card: 0 2px 8px rgba(31, 45, 61, 0.08);
+  --shadow-dropdown: 0 8px 24px rgba(31, 45, 61, 0.14);
+  --font-family-base: 'Inter', 'Noto Sans Devanagari', Arial, sans-serif;
+  --font-size-xs: 12px;
+  --font-size-sm: 13px;
+  --font-size-base: 14px;
+  --font-size-md: 15px;
+  --font-size-lg: 18px;
+  --font-size-xl: 22px;
+  --font-size-2xl: 26px;
+  --font-size-3xl: 28px;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  --font-size-page-title: var(--font-size-3xl);
+  --font-size-section-heading: var(--font-size-lg);
+  --font-size-card-title: var(--font-size-base);
+  --font-size-body: var(--font-size-base);
+  --font-size-table-heading: var(--font-size-xs);
+  --font-size-table-content: var(--font-size-sm);
+  --font-size-form-label: var(--font-size-sm);
+  --font-size-input: var(--font-size-base);
+  --font-size-button: var(--font-size-sm);
+  --font-size-helper: var(--font-size-xs);
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 28px;
+  --space-8: 32px;
+  --border-width: 1px;
+  --border-style: solid;
+  --control-radius: 7px;
+  --input-height: 42px;
+  --button-height: 40px;
+}
+
+html {
+  height: 100%;
+  @include mat.theme(
+    (
+      color: (
+        primary: mat.$azure-palette,
+        tertiary: mat.$cyan-palette,
+      ),
+      typography: Roboto,
+      density: 0,
+    )
+  );
+}
+
+body {
+  // Default the application to a light color theme. This can be changed to
+  // `dark` to enable the dark color theme, or to `light dark` to defer to the
+  // user's system settings.
+  color-scheme: light;
+
+  // Set a default background, font and text colors for the application using
+  // Angular Material's system-level CSS variables. Learn more about these
+  // variables at https://material.angular.dev/guide/system-variables
+  background-color: var(--mat-sys-surface);
+  color: var(--mat-sys-on-surface);
+  font: var(--mat-sys-body-medium);
+
+  // Reset the user agent margin.
+  margin: 0;
+  height: 100%;
+}
+/* Global styles */
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+}
+
+body {
+  font-family: var(--font-family-base);
+}
+
+.app-main {
+  background: var(--app-background);
+}
+
+.app-main :is([class$='-page'], [class$='-dashboard']) {
+  font-family: var(--font-family-base);
+}
+
+.app-main :is(.btn-primary, .btn.btn-primary) {
+  --bs-btn-bg: var(--brand-primary);
+  --bs-btn-border-color: var(--brand-primary);
+  --bs-btn-hover-bg: var(--brand-primary-hover);
+  --bs-btn-hover-border-color: var(--brand-primary-hover);
+  --bs-btn-active-bg: var(--brand-primary-hover);
+  --bs-btn-active-border-color: var(--brand-primary-hover);
+  background-color: var(--brand-primary);
+  border-color: var(--brand-primary);
+  color: var(--text-on-primary);
+}
+
+.app-main :is(.btn-primary, .btn.btn-primary):hover:not(:disabled) {
+  background-color: var(--brand-primary-hover);
+  border-color: var(--brand-primary-hover);
+}
+
+.app-main table thead th {
+  background-color: var(--surface-secondary);
+  color: var(--brand-primary);
+  border-bottom-color: var(--border-default);
+}
+
+.app-main table tbody td {
+  border-bottom-color: var(--border-default);
+}
+
+.app-main :is(input, select, textarea):focus-visible {
+  outline: 2px solid var(--brand-accent);
+  outline-offset: 2px;
+}
+
+.app-main :is(.property-dashboard, .water-dashboard) {
+  --primary: var(--brand-primary);
+  --primary-dark: var(--brand-primary-hover);
+  --blue-light: var(--brand-cream);
+  --border: var(--border-default);
+  --text: var(--text-primary);
+  --muted: var(--text-secondary);
+  --background: var(--app-background);
+  background: var(--app-background);
+  color: var(--text-primary);
+}
+
+.app-main :is(.property-dashboard, .water-dashboard) :is(.page-header h1, .section-heading h2, .panel-heading h2, .summary-content h2) {
+  color: var(--text-primary);
+}
+
+.app-main :is(.property-dashboard, .water-dashboard) :is(.summary-card, .panel, .workflow-item) {
+  border-color: var(--border-default);
+  border-radius: var(--radius-md);
+  background: var(--surface-primary);
+  box-shadow: var(--shadow-card);
+}
+
+.app-main :is(.property-dashboard, .water-dashboard) :is(.summary-icon.blue, .summary-icon.purple, .workflow-icon, .step-number) {
+  color: var(--brand-secondary);
+  background: var(--brand-cream);
+}
+
+.app-main :is(.property-dashboard, .water-dashboard) :is(.workflow-link, .btn-outline) {
+  color: var(--brand-secondary);
+}
+
+.arthaniti-sidebar .sidebar-brand {
+  justify-content: flex-start;
+  padding-left: 1rem;
+}
+
+.arthaniti-sidebar .sidebar-brand .brand-link {
+  transform: none;
+}
+
+.arthaniti-sidebar .sidebar-brand .brand-image {
+  opacity: 1 !important;
+}
+
+.arthaniti-sidebar .sidebar-brand .brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+  color: #fff;
+}
+
+.arthaniti-sidebar .sidebar-brand .brand-text:hover,
+.arthaniti-sidebar .sidebar-brand .brand-link:hover .brand-text {
+  color: #fff;
+}
+
+.arthaniti-sidebar .sidebar-brand .brand-text::after {
+  content: 'Chartered Accountant';
+  font-size: 0.65rem;
+  opacity: 0.8;
+}
