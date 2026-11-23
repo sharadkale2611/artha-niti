@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/ArthaNitiApi/ArthaNiti.Api.csproj" />
+    <Project Path="src/ArthaNitiApplication/ArthaNiti.Application.csproj" />
+    <Project Path="src/ArthaNitiDomain/ArthaNiti.Domain.csproj" />
+    <Project Path="src/ArthaNitiInfrastructure/ArthaNiti.Infrastructure.csproj" />
+  </Folder>
+</Solution>
