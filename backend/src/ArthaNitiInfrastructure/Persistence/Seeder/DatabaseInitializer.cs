@@ -4,6 +4,7 @@ using ArthaNiti.Infrastructure.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 
 namespace ArthaNiti.Infrastructure.Persistence;
 
@@ -17,11 +18,21 @@ public static class DatabaseInitializer
         var dbContext = scope.ServiceProvider
             .GetRequiredService<ArthaNitiDbContext>();
 
-        // The schema is managed explicitly in Package Manager Console.
-        if (!dbContext.Database.GetMigrations().Any() ||
-            (await dbContext.Database.GetPendingMigrationsAsync()).Any())
+        if (!dbContext.Database.GetMigrations().Any())
         {
-            throw new InvalidOperationException("Create the initial migration and run Update-Database before starting the API.");
+            throw new InvalidOperationException(
+                "No EF Core migrations were found in ArthaNiti.Infrastructure. Pull the migration files or create the initial migration.");
+        }
+
+        var environment = scope.ServiceProvider.GetRequiredService<IHostEnvironment>();
+        if (environment.IsDevelopment())
+        {
+            await dbContext.Database.MigrateAsync();
+        }
+        else if ((await dbContext.Database.GetPendingMigrationsAsync()).Any())
+        {
+            throw new InvalidOperationException(
+                "Apply the pending ArthaNiti migrations before starting the API in this environment.");
         }
 
         // Execute database SQL scripts
@@ -46,3 +57,6 @@ public static class DatabaseInitializer
             roleManager);
     }
 }
+
+
+
