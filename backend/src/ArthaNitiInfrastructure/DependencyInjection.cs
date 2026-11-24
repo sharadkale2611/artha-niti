@@ -10,6 +10,7 @@ using ArthaNiti.Application.Authentication.Interfaces;
 using ArthaNiti.Infrastructure.Identity;
 using ArthaNiti.Infrastructure.Persistence;
 using ArthaNiti.Infrastructure.Services;
+using ArthaNiti.Application.Interfaces;
 
 namespace ArthaNiti.Infrastructure;
 
@@ -52,6 +53,8 @@ public static class DependencyInjection
         services.AddScoped<IAuthService, AuthService>();
 
         services.AddScoped<IJwtTokenService, JwtTokenService>();
+
+        services.AddScoped<ITenantService, TenantService>();
 
         // --------------------------------------------
         // Database Services
