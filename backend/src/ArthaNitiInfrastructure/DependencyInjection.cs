@@ -30,6 +30,8 @@ public static class DependencyInjection
             throw new InvalidOperationException(
                 "DB_CONNECTION is not configured.");
         }
+        services.AddScoped<ITenantUserService,TenantUserService>();
+
 
         services.AddDbContext<ArthaNitiDbContext>(options =>
         {

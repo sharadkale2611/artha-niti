@@ -1,9 +1,10 @@
-using FirmApplication = ArthaNiti.Domain.Entities.Application;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore;
 using ArthaNiti.Domain.Entities;
 using ArthaNiti.Infrastructure.Identity;
 using ArthaNiti.Infrastructure.Persistence.Configurations;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
+using System.Net;
+using FirmApplication = ArthaNiti.Domain.Entities.Application;
 
 namespace ArthaNiti.Infrastructure.Persistence;
 
@@ -32,5 +33,6 @@ public class ArthaNitiDbContext
 
         builder.ApplyConfiguration(new ApplicationConfiguration());
     }
+    public DbSet<TenantUser> TenantUsers { get; set; }
 
 }
