@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ArthaNiti.Infrastructure.Migrations
 {
     [DbContext(typeof(ArthaNitiDbContext))]
-    [Migration("20261123062742_InitialIdentity")]
-    partial class InitialIdentity
+    [Migration("20261124104643_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
