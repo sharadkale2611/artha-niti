@@ -2,11 +2,14 @@
 using ArthaNiti.Application.Interfaces;
 using ArthaNiti.Domain.Entities;
 using ArthaNiti.Infrastructure.Persistence;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Reflection;
+using System.Security.Claims;
 using System.Text;
 
 namespace ArthaNiti.Infrastructure.Services
@@ -14,10 +17,14 @@ namespace ArthaNiti.Infrastructure.Services
     public class TenantService : ITenantService
     {
         private readonly ArthaNitiDbContext _context;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public TenantService(ArthaNitiDbContext context)
+
+        public TenantService(ArthaNitiDbContext context, IHttpContextAccessor httpContextAccessor)
         {
             _context = context;
+            _httpContextAccessor = httpContextAccessor;
+
         }
         public async Task<TenantResponseDto> CreateAsync(TenantCreateDto dto, CancellationToken cancellationToken = default)
         {
@@ -25,8 +32,14 @@ namespace ArthaNiti.Infrastructure.Services
 
             CopyMatchingProperties(dto, entity);
 
+            entity.Status ??= 1;
+            entity.IsActive ??= true;
+            entity.IsDeleted = false;
+            entity.CreatedAt = DateTime.Now;
+            entity.CreatedBy = GetCurrentUserId();
             _context.Set<Tenant>().Add(entity);
             await _context.SaveChangesAsync(cancellationToken);
+            
 
             return MapToResponse(entity);
         }
@@ -136,6 +149,13 @@ namespace ArthaNiti.Infrastructure.Services
 
                 destinationProperty.SetValue(destination, value);
             }
+        }
+        private string? GetCurrentUserId()
+        {
+            var user = _httpContextAccessor.HttpContext?.User;
+
+            return user?.FindFirstValue(ClaimTypes.NameIdentifier)
+                ?? user?.FindFirstValue("sub");
         }
     }
 }

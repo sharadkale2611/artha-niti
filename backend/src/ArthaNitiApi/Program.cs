@@ -92,6 +92,7 @@ try
     });
 
     // Database, Identity and JWT
+    builder.Services.AddHttpContextAccessor();
     builder.Services.AddInfrastructure();
 
     var app = builder.Build();
