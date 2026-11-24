@@ -14,6 +14,8 @@ namespace ArthaNiti.Application.Authentication.DTOs
         [StringLength(450)]
         public string UserId { get; set; }
 
+
+
         public bool? IsPrimary { get; set; }
 
         public int? Status { get; set; }

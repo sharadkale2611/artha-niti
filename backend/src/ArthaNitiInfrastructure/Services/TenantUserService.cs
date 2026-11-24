@@ -1,15 +1,12 @@
-﻿using ArthaNiti.Application.Authentication.DTOs;
+﻿
+using ArthaNiti.Application.Authentication.DTOs;
 using ArthaNiti.Application.Authentication.Interfaces;
 using ArthaNiti.Domain.Entities;
 using ArthaNiti.Infrastructure.Persistence;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Reflection;
 using System.Security.Claims;
-using System.Text;
 
 namespace ArthaNiti.Infrastructure.Services
 {
@@ -26,6 +23,7 @@ namespace ArthaNiti.Infrastructure.Services
             _httpContextAccessor = httpContextAccessor;
         }
 
+        // GET ALL TENANT USERS
         public async Task<List<TenantUserResponseDto>> GetAllAsync(
             CancellationToken cancellationToken = default)
         {
@@ -37,11 +35,13 @@ namespace ArthaNiti.Infrastructure.Services
             return entities.Select(MapToResponse).ToList();
         }
 
+        // GET TENANT USER BY ID
         public async Task<TenantUserResponseDto?> GetByIdAsync(
             int id,
             CancellationToken cancellationToken = default)
         {
             var entity = await _context.Set<TenantUser>()
+                .AsNoTracking()
                 .FirstOrDefaultAsync(
                     p => p.TenantUserId == id && p.IsDeleted != true,
                     cancellationToken);
@@ -49,6 +49,7 @@ namespace ArthaNiti.Infrastructure.Services
             return entity == null ? null : MapToResponse(entity);
         }
 
+        // CREATE TENANT USER
         public async Task<TenantUserResponseDto> CreateAsync(
             TenantUserCreateDto dto,
             CancellationToken cancellationToken = default)
@@ -57,7 +58,7 @@ namespace ArthaNiti.Infrastructure.Services
 
             CopyMatchingProperties(dto, entity);
 
-            entity.CreatedAt = DateTime.Now;
+            entity.CreatedAt = DateTime.UtcNow;
             entity.CreatedBy = GetCurrentUserId();
             entity.UpdatedAt = null;
             entity.UpdatedBy = null;
@@ -70,6 +71,7 @@ namespace ArthaNiti.Infrastructure.Services
             return MapToResponse(entity);
         }
 
+        // UPDATE TENANT USER
         public async Task<bool> UpdateAsync(
             int id,
             TenantUserUpdateDto dto,
@@ -93,6 +95,7 @@ namespace ArthaNiti.Infrastructure.Services
             return true;
         }
 
+        // SOFT DELETE TENANT USER
         public async Task<bool> DeleteAsync(
             int id,
             CancellationToken cancellationToken = default)
@@ -114,6 +117,7 @@ namespace ArthaNiti.Infrastructure.Services
             return true;
         }
 
+        // MAP ENTITY TO RESPONSE DTO
         private static TenantUserResponseDto MapToResponse(
             TenantUser entity)
         {
@@ -124,6 +128,7 @@ namespace ArthaNiti.Infrastructure.Services
             return dto;
         }
 
+        // COPY MATCHING PROPERTIES
         private static void CopyMatchingProperties(
             object source,
             object destination)
@@ -169,13 +174,15 @@ namespace ArthaNiti.Infrastructure.Services
 
                 if (value == null &&
                     destinationProperty.IsDefined(
-                        typeof(RequiredAttribute), true))
+                        typeof(System.ComponentModel.DataAnnotations.RequiredAttribute),
+                        true))
                     continue;
 
                 destinationProperty.SetValue(destination, value);
             }
         }
 
+        // GET CURRENT LOGGED-IN USER ID
         private string? GetCurrentUserId()
         {
             var user = _httpContextAccessor.HttpContext?.User;

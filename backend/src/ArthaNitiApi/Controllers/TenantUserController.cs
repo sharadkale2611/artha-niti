@@ -1,7 +1,7 @@
-﻿using ArthaNiti.Application.Authentication.DTOs;
+﻿
+using ArthaNiti.Application.Authentication.DTOs;
 using ArthaNiti.Application.Authentication.Interfaces;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ArthaNiti.Api.Controllers
@@ -22,6 +22,7 @@ namespace ArthaNiti.Api.Controllers
             _logger = logger;
         }
 
+        // GET ALL
         [HttpGet]
         public async Task<IActionResult> GetAll(
             CancellationToken cancellationToken)
@@ -53,7 +54,8 @@ namespace ArthaNiti.Api.Controllers
             }
         }
 
-        [HttpGet("{id}")]
+        // GET BY ID
+        [HttpGet("{id:int}")]
         public async Task<IActionResult> GetById(
             int id,
             CancellationToken cancellationToken)
@@ -74,7 +76,8 @@ namespace ArthaNiti.Api.Controllers
                     });
                 }
 
-                var result = await _service.GetByIdAsync(id, cancellationToken);
+                var result = await _service.GetByIdAsync(
+                    id, cancellationToken);
 
                 if (result == null)
                 {
@@ -114,6 +117,7 @@ namespace ArthaNiti.Api.Controllers
             }
         }
 
+        // CREATE
         [HttpPost]
         public async Task<IActionResult> Create(
             [FromBody] TenantUserCreateDto dto,
@@ -137,17 +141,12 @@ namespace ArthaNiti.Api.Controllers
 
                 if (!ModelState.IsValid)
                 {
-                    var errors = new List<string>();
-
-                    foreach (var entry in ModelState.Values)
-                    {
-                        foreach (var error in entry.Errors)
-                        {
-                            errors.Add(string.IsNullOrWhiteSpace(error.ErrorMessage)
-                                ? "A validation error occurred."
-                                : error.ErrorMessage);
-                        }
-                    }
+                    var errors = ModelState
+                        .SelectMany(x => x.Value!.Errors)
+                        .Select(x => string.IsNullOrWhiteSpace(x.ErrorMessage)
+                            ? "A validation error occurred."
+                            : x.ErrorMessage)
+                        .ToList();
 
                     return BadRequest(new ApiResponse<TenantUserResponseDto>
                     {
@@ -158,19 +157,8 @@ namespace ArthaNiti.Api.Controllers
                     });
                 }
 
-                var result = await _service.CreateAsync(dto, cancellationToken);
-
-                if (result == null)
-                {
-                    return StatusCode(500,
-                        new ApiResponse<TenantUserResponseDto>
-                        {
-                            Success = false,
-                            Message = "Unable to create tenant user.",
-                            Data = null,
-                            Errors = new List<string>()
-                        });
-                }
+                var result = await _service.CreateAsync(
+                    dto, cancellationToken);
 
                 return StatusCode(201,
                     new ApiResponse<TenantUserResponseDto>
@@ -196,7 +184,8 @@ namespace ArthaNiti.Api.Controllers
             }
         }
 
-        [HttpPut("{id}")]
+        // UPDATE
+        [HttpPut("{id:int}")]
         public async Task<IActionResult> Update(
             int id,
             [FromBody] TenantUserUpdateDto dto,
@@ -234,17 +223,12 @@ namespace ArthaNiti.Api.Controllers
 
                 if (!ModelState.IsValid)
                 {
-                    var errors = new List<string>();
-
-                    foreach (var entry in ModelState.Values)
-                    {
-                        foreach (var error in entry.Errors)
-                        {
-                            errors.Add(string.IsNullOrWhiteSpace(error.ErrorMessage)
-                                ? "A validation error occurred."
-                                : error.ErrorMessage);
-                        }
-                    }
+                    var errors = ModelState
+                        .SelectMany(x => x.Value!.Errors)
+                        .Select(x => string.IsNullOrWhiteSpace(x.ErrorMessage)
+                            ? "A validation error occurred."
+                            : x.ErrorMessage)
+                        .ToList();
 
                     return BadRequest(new ApiResponse<TenantUserResponseDto>
                     {
@@ -272,7 +256,8 @@ namespace ArthaNiti.Api.Controllers
                     });
                 }
 
-                var result = await _service.GetByIdAsync(id, cancellationToken);
+                var result = await _service.GetByIdAsync(
+                    id, cancellationToken);
 
                 return Ok(new ApiResponse<TenantUserResponseDto>
                 {
@@ -298,7 +283,8 @@ namespace ArthaNiti.Api.Controllers
             }
         }
 
-        [HttpDelete("{id}")]
+        // DELETE (SOFT DELETE)
+        [HttpDelete("{id:int}")]
         public async Task<IActionResult> Delete(
             int id,
             CancellationToken cancellationToken)
@@ -319,7 +305,8 @@ namespace ArthaNiti.Api.Controllers
                     });
                 }
 
-                var deleted = await _service.DeleteAsync(id, cancellationToken);
+                var deleted = await _service.DeleteAsync(
+                    id, cancellationToken);
 
                 if (!deleted)
                 {

@@ -1,7 +1,4 @@
 ﻿using ArthaNiti.Application.Authentication.DTOs;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ArthaNiti.Application.Authentication.Interfaces
 {
