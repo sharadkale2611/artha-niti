@@ -27,5 +27,6 @@ public class ArthaNitiDbContext : IdentityDbContext<AppUser, AppRole, string>
 
     //public DbSet<Tenant> Tenants { get; set; } = null!;
 
+
     // DbSet-End
 }
