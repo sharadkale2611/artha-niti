@@ -1,0 +1,24 @@
+IF OBJECT_ID('Cities', 'U') IS NULL
+BEGIN
+    CREATE TABLE Cities
+(
+     CityId INT IDENTITY(1,1) PRIMARY KEY,
+
+    TenantId INT  DEFAULT 1,
+
+	 Code varchar(50) NOT NULL,
+
+     Name VARCHAR(150) NOT NULL,
+
+     Logo VARCHAR(500) NULL,
+
+     IsActive BIT NOT NULL DEFAULT 1,
+	 IsDeleted BIT NOT NULL  DEFAULT 0,
+
+     CreatedAt DATETIME NOT NULL DEFAULT GETDATE(),
+	 CreatedBy VARCHAR(450) NULL,
+
+     UpdatedAt DATETIME NULL,
+	 UpdatedBy	VARCHAR(450) NULL,
+);
+END;

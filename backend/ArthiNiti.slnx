@@ -1,1 +1,8 @@
-<Solution />
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/ArthaNiti.Api/ArthaNiti.Api.csproj" Id="d020b606-b421-422e-9a8c-fc98c7e59133" />
+    <Project Path="src/ArthaNiti.Application/ArthaNiti.Application.csproj" Id="f2c60a42-6420-4eae-a0bb-bc5cc3a5a4d1" />
+    <Project Path="src/ArthaNiti.Domain/ArthaNiti.Domain.csproj" Id="4ea734f1-6ac5-4f14-9dc2-8c4f0f7a526c" />
+    <Project Path="src/ArthaNiti.Infrastructure/ArthaNiti.Infrastructure.csproj" Id="1ec054eb-e622-4e76-8dbe-f121ce6807cd" />
+  </Folder>
+</Solution>
