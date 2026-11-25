@@ -23,11 +23,19 @@ public static class DatabaseInitializer
         // has no pending model changes
         // --------------------------------------------
 
-        if (!dbContext.Database.HasPendingModelChanges())
-        {
-            await dbContext.Database.MigrateAsync();
-        }
+        //if (!dbContext.Database.HasPendingModelChanges())
+        //{
+        //    await dbContext.Database.MigrateAsync();
+        //}
 
+
+        var appliedMigrations = await dbContext.Database.GetAppliedMigrationsAsync();
+
+        if (!appliedMigrations.Any())
+        {
+            var initialMigration = dbContext.Database.GetMigrations().First();
+            await dbContext.Database.MigrateAsync(initialMigration);
+        }
         // --------------------------------------------
         // Execute database SQL scripts
         // --------------------------------------------
