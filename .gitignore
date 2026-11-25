@@ -5,3 +5,5 @@
 *.env
 
 /backend/src/ArthaNitiApi/Logs/
+
+/backend/src/ArthaNitiApi/.env
