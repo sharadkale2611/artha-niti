@@ -34,5 +34,6 @@ public class ArthaNitiDbContext
         builder.ApplyConfiguration(new ApplicationConfiguration());
     }
     public DbSet<TenantUser> TenantUsers { get; set; }
+    public DbSet<TenantUserRole> TenantUserRoles { get; set; }
 
 }
