@@ -1,5 +1,6 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿
 using ArthaNiti.Infrastructure.Identity;
+using Microsoft.AspNetCore.Identity;
 
 namespace ArthaNiti.Infrastructure.Persistence.Seeder;
 
@@ -17,7 +18,7 @@ public static class DatabaseSeeder
         var rolesValue =
             Environment.GetEnvironmentVariable("IDENTITY_ROLES");
 
-        var roles = (rolesValue ?? "SuperAdmin,Admin,User")
+        var roles = (rolesValue ?? "User")
             .Split(
                 ',',
                 StringSplitOptions.RemoveEmptyEntries)

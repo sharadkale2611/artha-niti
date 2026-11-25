@@ -1,4 +1,4 @@
-
+using ArthaNiti.Api.Middleware;
 using ArthaNiti.Infrastructure;
 using ArthaNiti.Infrastructure.Persistence;
 using DotNetEnv;
@@ -54,6 +54,7 @@ builder.Services.AddSwaggerGen(options =>
 });
 
 var app = builder.Build();
+app.UseMiddleware<ExceptionMiddleware>();
 
 app.UseCors("AngularClient");
 

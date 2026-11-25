@@ -1,4 +1,5 @@
-﻿using ArthaNiti.Infrastructure.Identity;
+﻿
+using ArthaNiti.Infrastructure.Identity;
 using ArthaNiti.Infrastructure.Persistence.Seeder;
 using ArthaNiti.Infrastructure.Services;
 using Microsoft.AspNetCore.Identity;
@@ -18,10 +19,14 @@ public static class DatabaseInitializer
             .GetRequiredService<ArthaNitiDbContext>();
 
         // --------------------------------------------
-        // Apply pending EF Core migrations
+        // Apply EF Core migrations only when model
+        // has no pending model changes
         // --------------------------------------------
 
-        await dbContext.Database.MigrateAsync();
+        if (!dbContext.Database.HasPendingModelChanges())
+        {
+            await dbContext.Database.MigrateAsync();
+        }
 
         // --------------------------------------------
         // Execute database SQL scripts
