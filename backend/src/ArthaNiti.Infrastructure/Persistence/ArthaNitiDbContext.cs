@@ -1,5 +1,6 @@
 ﻿
 //using ArthaNiti.Domain.Entities;
+using ArthaNiti.Domain.Entities;
 using ArthaNiti.Infrastructure.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -14,6 +15,7 @@ public class ArthaNitiDbContext : IdentityDbContext<AppUser, AppRole, string>
     {
     }
 
+    public DbSet<Tenant> Tenants { get; set; }
     protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);
