@@ -22,7 +22,8 @@ public class ArthaNitiDbContext : IdentityDbContext<AppUser, AppRole, string>
 
         builder.Entity<AppRole>().ToTable("AspNetRoles");
 
-        // Keep your existing entity configurations here.
+        builder.Entity<Tenant>()
+            .HasQueryFilter(t => t.IsDeleted == false);
     }
 
     //public DbSet<Tenant> Tenants { get; set; } = null!;

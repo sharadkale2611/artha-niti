@@ -1,4 +1,5 @@
 using ArthaNiti.Api.Middleware;
+using ArthaNiti.Application.Interfaces;
 using ArthaNiti.Infrastructure;
 using ArthaNiti.Infrastructure.Persistence;
 using DotNetEnv;
@@ -27,6 +28,7 @@ builder.Services.AddCors(options =>
 builder.Services.AddInfrastructure(builder.Configuration);
 
 builder.Services.AddEndpointsApiExplorer();
+
 
 builder.Services.AddSwaggerGen(options =>
 {

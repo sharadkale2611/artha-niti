@@ -1,143 +1,128 @@
-﻿
-using ArthaNiti.Application.DTOs;
+﻿using ArthaNiti.Application.DTOs;
 using ArthaNiti.Application.Interfaces;
 using ArthaNiti.Domain.Entities;
 using ArthaNiti.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Reflection;
-using System.Text;
 
-namespace ArthaNiti.Infrastructure.Services
+namespace ArthaNiti.Infrastructure.Services;
+
+public class TenantService : ITenantService
 {
-    public class TenantService : ITenantService
+    private readonly ArthaNitiDbContext _context;
+
+    public TenantService(ArthaNitiDbContext context)
     {
-        private readonly ArthaNitiDbContext _context;
+        _context = context;
+    }
 
-        public TenantService(ArthaNitiDbContext context)
+    public async Task<List<TenantResponseDto>> GetAllAsync(
+        CancellationToken cancellationToken = default)
+    {
+        var tenants = await _context.Tenants
+            .AsNoTracking()
+            .OrderBy(t => t.TenantId)
+            .ToListAsync(cancellationToken);
+
+        return tenants.Select(MapToResponse).ToList();
+    }
+
+    public async Task<TenantResponseDto?> GetByIdAsync(
+        int id,
+        CancellationToken cancellationToken = default)
+    {
+        var tenant = await _context.Tenants
+            .AsNoTracking()
+            .FirstOrDefaultAsync(t => t.TenantId == id, cancellationToken);
+
+        return tenant is null ? null : MapToResponse(tenant);
+    }
+
+    public async Task<TenantResponseDto> CreateAsync(
+        TenantCreateDto dto,
+        CancellationToken cancellationToken = default)
+    {
+        var tenant = new Tenant
         {
-            _context = context;
-        }
-        public async Task<TenantResponseDto> CreateAsync(TenantCreateDto dto, CancellationToken cancellationToken = default)
+            TenantCode = dto.TenantCode,
+            TenantName = dto.TenantName,
+            Slug = dto.Slug,
+            Email = dto.Email,
+            PhoneNumber = dto.PhoneNumber,
+            Status = dto.Status,
+            IsActive = dto.IsActive,
+            IsDeleted = false,
+            CreatedAt = DateTime.UtcNow
+        };
+
+        _context.Tenants.Add(tenant);
+        await _context.SaveChangesAsync(cancellationToken);
+
+        return MapToResponse(tenant);
+    }
+
+    public async Task<bool> UpdateAsync(
+        int id,
+        TenantUpdateDto dto,
+        CancellationToken cancellationToken = default)
+    {
+        var tenant = await _context.Tenants
+            .FirstOrDefaultAsync(t => t.TenantId == id, cancellationToken);
+
+        if (tenant is null)
+            return false;
+
+        tenant.TenantCode = dto.TenantCode;
+        tenant.TenantName = dto.TenantName;
+        tenant.Slug = dto.Slug;
+        tenant.Email = dto.Email;
+        tenant.PhoneNumber = dto.PhoneNumber;
+        tenant.Status = (int?)dto.Status ?? tenant.Status;
+        tenant.IsActive = (bool?)dto.IsActive ?? tenant.IsActive;
+        tenant.UpdatedAt = DateTime.UtcNow;
+
+        await _context.SaveChangesAsync(cancellationToken);
+        return true;
+    }
+
+    public async Task<bool> DeleteAsync(
+    int id,
+    CancellationToken cancellationToken = default)
+    {
+        var updatedRows = await _context.Tenants
+            .Where(t => t.TenantId == id && t.IsDeleted == false)
+            .ExecuteUpdateAsync(set => set
+                .SetProperty(t => t.IsDeleted, true)
+                .SetProperty(t => t.IsActive, false)
+                .SetProperty(t => t.UpdatedAt, DateTime.UtcNow),
+                cancellationToken);
+
+        return updatedRows > 0;
+    }
+
+    private static TenantResponseDto MapToResponse(Tenant tenant)
+    {
+        return new TenantResponseDto
         {
-            var entity = new Tenant();
+            TenantId = tenant.TenantId,
+            TenantCode = tenant.TenantCode,
+            TenantName = tenant.TenantName,
+            Slug = tenant.Slug,
+            Email = tenant.Email,
+            PhoneNumber = tenant.PhoneNumber,
+            Status = RequiredValue(tenant.Status, nameof(Tenant.Status), tenant.TenantId),
+            IsActive = RequiredValue(tenant.IsActive, nameof(Tenant.IsActive), tenant.TenantId),
+            IsDeleted = RequiredValue(tenant.IsDeleted, nameof(Tenant.IsDeleted), tenant.TenantId),
+            CreatedAt = RequiredValue(tenant.CreatedAt, nameof(Tenant.CreatedAt), tenant.TenantId),
+            CreatedBy = tenant.CreatedBy,
+            UpdatedAt = tenant.UpdatedAt,
+            UpdatedBy = tenant.UpdatedBy
+        };
+    }
 
-            CopyMatchingProperties(dto, entity);
-
-            _context.Set<Tenant>().Add(entity);
-            await _context.SaveChangesAsync(cancellationToken);
-
-            return MapToResponse(entity);
-        }
-
-        public async Task<bool> DeleteAsync(int id, CancellationToken cancellationToken = default)
-        {
-            var entity = await _context.Set<Tenant>()
-                .FindAsync(new object?[] { id }, cancellationToken);
-
-            if (entity == null)
-                return false;
-
-            _context.Set<Tenant>().Remove(entity);
-            await _context.SaveChangesAsync(cancellationToken);
-
-            return true;
-        }
-
-        public async Task<List<TenantResponseDto>> GetAllAsync(CancellationToken cancellationToken = default)
-        {
-
-            var entities = await _context.Set<Tenant>()
-                .AsNoTracking()
-                .ToListAsync(cancellationToken);
-
-            return entities.Select(MapToResponse).ToList();
-        }
-
-        public async Task<TenantResponseDto?> GetByIdAsync(int id, CancellationToken cancellationToken = default)
-        {
-            var entity = await _context.Set<Tenant>()
-                 .FindAsync(new object?[] { id }, cancellationToken);
-
-            return entity == null ? null : MapToResponse(entity);
-        }
-
-        public async Task<bool> UpdateAsync(int id, TenantUpdateDto dto, CancellationToken cancellationToken = default)
-        {
-            var entity = await _context.Set<Tenant>()
-                .FindAsync(new object?[] { id }, cancellationToken);
-
-            if (entity == null)
-                return false;
-
-            CopyMatchingProperties(dto, entity);
-
-            await _context.SaveChangesAsync(cancellationToken);
-            return true;
-        }
-
-        private static TenantResponseDto MapToResponse(
-            Tenant entity)
-        {
-            var dto = new TenantResponseDto();
-            CopyMatchingProperties(entity, dto);
-            return dto;
-        }
-
-        private static void CopyMatchingProperties(
-            object source,
-            object destination)
-        {
-            var sourceProperties = source.GetType().GetProperties(
-                BindingFlags.Public | BindingFlags.Instance);
-
-            var destinationProperties = destination.GetType().GetProperties(
-                BindingFlags.Public | BindingFlags.Instance);
-
-            foreach (var sourceProperty in sourceProperties)
-            {
-                if (!sourceProperty.CanRead ||
-                    sourceProperty.GetIndexParameters().Length > 0)
-                    continue;
-
-                var destinationProperty = destinationProperties.FirstOrDefault(
-                    p => p.Name == sourceProperty.Name &&
-                         p.CanWrite &&
-                         p.GetIndexParameters().Length == 0);
-
-                if (destinationProperty == null)
-                    continue;
-
-                var sourceType = sourceProperty.PropertyType;
-                var destinationType = destinationProperty.PropertyType;
-
-                var sourceUnderlyingType =
-                    Nullable.GetUnderlyingType(sourceType) ?? sourceType;
-
-                var destinationUnderlyingType =
-                    Nullable.GetUnderlyingType(destinationType) ?? destinationType;
-
-                if (sourceUnderlyingType != destinationUnderlyingType)
-                    continue;
-
-                var value = sourceProperty.GetValue(source);
-
-                if (value == null &&
-                    destinationType.IsValueType &&
-                    Nullable.GetUnderlyingType(destinationType) == null)
-                    continue;
-
-                // Omitted value for a required column: keep the stored value
-                // (update) or let the database default apply (create).
-                if (value == null &&
-                    destinationProperty.IsDefined(typeof(RequiredAttribute), true))
-                    continue;
-
-                destinationProperty.SetValue(destination, value);
-            }
-        }
+    private static T RequiredValue<T>(T? value, string field, int tenantId)
+        where T : struct
+    {
+        return value ?? throw new InvalidOperationException(
+            $"TenantId {tenantId} has NULL in required field {field}.");
     }
 }
-

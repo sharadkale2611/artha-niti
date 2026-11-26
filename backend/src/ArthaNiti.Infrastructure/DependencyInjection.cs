@@ -1,5 +1,6 @@
 ﻿
 using ArthaNiti.Application.Authentication.Interfaces;
+using ArthaNiti.Application.Interfaces;
 using ArthaNiti.Infrastructure.Identity;
 using ArthaNiti.Infrastructure.Persistence;
 using ArthaNiti.Infrastructure.Services;
@@ -97,6 +98,7 @@ public static class DependencyInjection
         // ==========================================
 
         services.AddScoped<IJwtTokenService, JwtTokenService>();
+        services.AddScoped<ITenantService, TenantService>();
 
 
         // ==========================================
