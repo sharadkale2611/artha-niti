@@ -104,6 +104,11 @@ public static class DependencyInjection
         // ==========================================
 
         services.AddScoped<IJwtTokenService, JwtTokenService>();
+<<<<<<< HEAD
+=======
+        services.AddScoped<ITenantService, TenantService>();
+        services.AddScoped<ITenantRoleService, TenantRoleService>();
+>>>>>>> 17e8ef0c74da54df0317f35dc8c4cd330bea5dce
 
         
        
