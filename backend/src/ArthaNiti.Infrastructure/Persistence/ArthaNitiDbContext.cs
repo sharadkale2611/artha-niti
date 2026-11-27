@@ -16,7 +16,6 @@ public class ArthaNitiDbContext : IdentityDbContext<AppUser, AppRole, string>
     }
 
     public DbSet<Tenant> Tenants { get; set; }
-    public DbSet<TenantUser> TenantUsers { get; set; }
     protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);
@@ -28,6 +27,8 @@ public class ArthaNitiDbContext : IdentityDbContext<AppUser, AppRole, string>
     }
 
     //public DbSet<Tenant> Tenants { get; set; } = null!;
+    public DbSet<TenantUserRole> TenantUserRoles { get; set; }
+    public DbSet<TenantUser> TenantUsers { get; set; }
 
 
     // DbSet-End

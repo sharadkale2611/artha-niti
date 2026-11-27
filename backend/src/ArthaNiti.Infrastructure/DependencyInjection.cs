@@ -1,6 +1,7 @@
 ﻿
 using ArthaNiti.Application.Authentication.Interfaces;
 using ArthaNiti.Application.Interfaces;
+using ArthaNiti.Application.TenantUserRoles.Interfaces;
 using ArthaNiti.Application.TenantUsers.Interfaces;
 using ArthaNiti.Infrastructure.Identity;
 using ArthaNiti.Infrastructure.Persistence;
@@ -99,15 +100,18 @@ public static class DependencyInjection
         // ==========================================
 
         services.AddScoped<IJwtTokenService, JwtTokenService>();
-        services.AddScoped<ITenantService, TenantService>();
-
+        
+       
 
         // ==========================================
         // AUTH SERVICE
         // ==========================================
 
         services.AddScoped<IAuthService, AuthService>();
+        services.AddScoped<ITenantService, TenantService>();
         services.AddScoped<ITenantUserService, TenantUserService>();
+        services.AddScoped<ITenantUserRoleService, TenantUserRoleService>();
+
 
         // ==========================================
         // JWT AUTHENTICATION
