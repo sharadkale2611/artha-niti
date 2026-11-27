@@ -16,6 +16,7 @@ public class ArthaNitiDbContext : IdentityDbContext<AppUser, AppRole, string>
     }
 
     public DbSet<Tenant> Tenants { get; set; }
+    public DbSet<TenantRole> TenantRoles { get; set; }
     protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);
