@@ -4,6 +4,7 @@ using ArthaNiti.Application.TenantSettings.Interfaces;
 using ArthaNiti.Domain.Entities;
 using ArthaNiti.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
+using System.Globalization;
 
 namespace ArthaNiti.Infrastructure.Services;
 
@@ -33,6 +34,7 @@ public class TenantSettingService : ITenantSettingService
         if (exists)
             throw new InvalidOperationException(
                 "This setting key already exists for this tenant.");
+        ValidateValueType(dto.ValueType, dto.SettingValue);
 
         var setting = new TenantSetting
         {
@@ -95,6 +97,7 @@ public class TenantSettingService : ITenantSettingService
 
         if (setting == null)
             return null;
+        ValidateValueType(dto.ValueType, dto.SettingValue);
 
         setting.SettingValue = dto.SettingValue;
         setting.ValueType = dto.ValueType.Trim();
@@ -132,6 +135,48 @@ public class TenantSettingService : ITenantSettingService
         await _context.SaveChangesAsync();
 
         return true;
+    }
+
+    private static void ValidateValueType(
+    string valueType,
+    string? settingValue)
+    {
+        if (string.IsNullOrWhiteSpace(valueType))
+            throw new InvalidOperationException(
+                "ValueType is required.");
+
+        if (settingValue == null)
+            return;
+
+        bool isValid = valueType.Trim().ToLowerInvariant() switch
+        {
+            "string" => true,
+
+            "integer" => int.TryParse(settingValue, out _),
+
+            "boolean" => bool.TryParse(settingValue, out _),
+
+            "decimal" => decimal.TryParse(
+                settingValue,
+                NumberStyles.Number,
+                CultureInfo.InvariantCulture,
+                out _),
+
+            "datetime" => DateTime.TryParse(
+                settingValue,
+                CultureInfo.InvariantCulture,
+                DateTimeStyles.RoundtripKind,
+                out _),
+
+            _ => throw new InvalidOperationException(
+                "Unsupported ValueType. Allowed values: String, Integer, Boolean, Decimal, DateTime.")
+        };
+
+        if (!isValid)
+        {
+            throw new InvalidOperationException(
+                $"SettingValue '{settingValue}' is not valid for ValueType '{valueType}'.");
+        }
     }
 
     private static TenantSettingResponseDto MapToResponse(
