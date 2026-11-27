@@ -1,5 +1,5 @@
 ﻿
-//using ArthaNiti.Domain.Entities;
+using ArthaNiti.Domain.Entites;
 using ArthaNiti.Domain.Entities;
 using ArthaNiti.Infrastructure.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
@@ -30,7 +30,7 @@ public class ArthaNitiDbContext : IdentityDbContext<AppUser, AppRole, string>
     public DbSet<TenantUserRole> TenantUserRoles { get; set; }
     public DbSet<TenantUser> TenantUsers { get; set; }
     public DbSet<TenantSetting> TenantSettings { get; set; }
-
+    public DbSet<Permission> Permissions { get; set; }
 
     // DbSet-End
 }
