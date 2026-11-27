@@ -117,6 +117,7 @@ public static class DependencyInjection
         services.AddScoped<ITenantSettingService, TenantSettingService>();
         services.AddScoped<ITenantRolePermissionService, TenantRolePermissionService>();
         services.AddScoped<IMenuService, MenuService>();
+        services.AddScoped<ITenantDomainService, TenantDomainService>();
 
 
         // ==========================================
