@@ -1,6 +1,7 @@
 ﻿
 using ArthaNiti.Application.Authentication.Interfaces;
 using ArthaNiti.Application.Interfaces;
+using ArthaNiti.Application.TenantSettings.Interfaces;
 using ArthaNiti.Application.TenantUserRoles.Interfaces;
 using ArthaNiti.Application.TenantUsers.Interfaces;
 using ArthaNiti.Infrastructure.Identity;
@@ -111,6 +112,7 @@ public static class DependencyInjection
         services.AddScoped<ITenantService, TenantService>();
         services.AddScoped<ITenantUserService, TenantUserService>();
         services.AddScoped<ITenantUserRoleService, TenantUserRoleService>();
+        services.AddScoped<ITenantSettingService, TenantSettingService>();
 
 
         // ==========================================
