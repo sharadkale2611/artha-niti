@@ -129,7 +129,7 @@ public static class DependencyInjection
         services.AddScoped<ITenantAuditLogService, TenantAuditLogService>();
 
         services.AddScoped<IPermissionService, PermissionService>();
-
+        services.AddScoped<IMenuPermissionService, MenuPermissionService>();
 
 
         // ==========================================
@@ -176,12 +176,4 @@ public static class DependencyInjection
 
         return services;
     }
-}
-
-internal interface IPermissionService
-{
-}
-
-internal interface ITenantRolePermissionService
-{
 }
