@@ -6,11 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-<<<<<<< HEAD
   <ItemGroup>
     <ProjectReference Include="..\ArthaNiti.Domain\ArthaNiti.Domain.csproj" />
   </ItemGroup>
 
-=======
->>>>>>> 17e8ef0c74da54df0317f35dc8c4cd330bea5dce
 </Project>

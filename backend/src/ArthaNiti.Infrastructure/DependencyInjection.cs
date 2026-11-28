@@ -11,6 +11,7 @@ using ArthaNiti.Infrastructure.Identity;
 using ArthaNiti.Infrastructure.Persistence;
 using ArthaNiti.Infrastructure.Services;
 
+
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -104,11 +105,9 @@ public static class DependencyInjection
         // ==========================================
 
         services.AddScoped<IJwtTokenService, JwtTokenService>();
-<<<<<<< HEAD
-=======
+
         services.AddScoped<ITenantService, TenantService>();
         services.AddScoped<ITenantRoleService, TenantRoleService>();
->>>>>>> 17e8ef0c74da54df0317f35dc8c4cd330bea5dce
 
         
        
@@ -122,13 +121,13 @@ public static class DependencyInjection
         services.AddScoped<ITenantUserService, TenantUserService>();
         services.AddScoped<ITenantUserRoleService, TenantUserRoleService>();
         services.AddScoped<ITenantSettingService, TenantSettingService>();
-<<<<<<< HEAD
+
         services.AddScoped<ITenantRolePermissionService, TenantRolePermissionService>();
         services.AddScoped<IMenuService, MenuService>();
         services.AddScoped<ITenantAuditLogService, TenantAuditLogService>();
-=======
+
         services.AddScoped<IPermissionService, PermissionService>();
->>>>>>> 1129377fa0e6c466ca25372a70ee69c263dd1055
+
 
 
         // ==========================================
@@ -175,4 +174,12 @@ public static class DependencyInjection
 
         return services;
     }
+}
+
+internal interface IPermissionService
+{
+}
+
+internal interface ITenantRolePermissionService
+{
 }
