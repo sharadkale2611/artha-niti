@@ -35,6 +35,7 @@ public class ArthaNitiDbContext : IdentityDbContext<AppUser, AppRole, string>
     public DbSet<TenantRolePermission> TenantRolePermissions { get; set; }
     public DbSet<Menu> Menus { get; set; }
     public DbSet<TenantAuditLog> TenantAuditLogs { get; set; }
+    public DbSet<TenantDomain> TenantDomains { get; set; }
     public DbSet<Permission> Permissions { get; set; }
 
 

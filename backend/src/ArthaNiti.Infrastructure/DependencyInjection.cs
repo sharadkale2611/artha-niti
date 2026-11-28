@@ -18,7 +18,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
-
+using System.Security;
 using System.Text;
 
 namespace ArthaNiti.Infrastructure;
@@ -109,6 +109,7 @@ public static class DependencyInjection
         services.AddScoped<ITenantService, TenantService>();
         services.AddScoped<ITenantRoleService, TenantRoleService>();
 
+
         
        
 
@@ -124,6 +125,7 @@ public static class DependencyInjection
 
         services.AddScoped<ITenantRolePermissionService, TenantRolePermissionService>();
         services.AddScoped<IMenuService, MenuService>();
+        services.AddScoped<ITenantDomainService, TenantDomainService>();
         services.AddScoped<ITenantAuditLogService, TenantAuditLogService>();
 
         services.AddScoped<IPermissionService, PermissionService>();
