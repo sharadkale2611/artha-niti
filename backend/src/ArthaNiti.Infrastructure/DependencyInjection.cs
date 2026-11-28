@@ -2,6 +2,7 @@
 using ArthaNiti.Application.Authentication.Interfaces;
 using ArthaNiti.Application.Interfaces;
 using ArthaNiti.Application.Menus.Interfaces;
+using ArthaNiti.Application.TenantAuditLogs.Interfaces;
 using ArthaNiti.Application.TenantRolePermissions.Interfaces;
 using ArthaNiti.Application.TenantSettings.Interfaces;
 using ArthaNiti.Application.TenantUserRoles.Interfaces;
@@ -16,7 +17,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
-
+using System.Security;
 using System.Text;
 
 namespace ArthaNiti.Infrastructure;
@@ -103,6 +104,11 @@ public static class DependencyInjection
         // ==========================================
 
         services.AddScoped<IJwtTokenService, JwtTokenService>();
+
+        services.AddScoped<ITenantService, TenantService>();
+        services.AddScoped<ITenantRoleService, TenantRoleService>();
+
+
         
        
 
@@ -115,9 +121,14 @@ public static class DependencyInjection
         services.AddScoped<ITenantUserService, TenantUserService>();
         services.AddScoped<ITenantUserRoleService, TenantUserRoleService>();
         services.AddScoped<ITenantSettingService, TenantSettingService>();
+
         services.AddScoped<ITenantRolePermissionService, TenantRolePermissionService>();
         services.AddScoped<IMenuService, MenuService>();
         services.AddScoped<ITenantDomainService, TenantDomainService>();
+        services.AddScoped<ITenantAuditLogService, TenantAuditLogService>();
+
+        services.AddScoped<IPermissionService, PermissionService>();
+
 
 
         // ==========================================

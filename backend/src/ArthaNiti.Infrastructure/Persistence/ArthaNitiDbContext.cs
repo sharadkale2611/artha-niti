@@ -1,5 +1,5 @@
 ﻿
-//using ArthaNiti.Domain.Entities;
+using ArthaNiti.Domain.Entites;
 using ArthaNiti.Domain.Entities;
 using ArthaNiti.Infrastructure.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
@@ -16,6 +16,7 @@ public class ArthaNitiDbContext : IdentityDbContext<AppUser, AppRole, string>
     }
 
     public DbSet<Tenant> Tenants { get; set; }
+    public DbSet<TenantRole> TenantRoles { get; set; }
     protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);
@@ -30,9 +31,13 @@ public class ArthaNitiDbContext : IdentityDbContext<AppUser, AppRole, string>
     public DbSet<TenantUserRole> TenantUserRoles { get; set; }
     public DbSet<TenantUser> TenantUsers { get; set; }
     public DbSet<TenantSetting> TenantSettings { get; set; }
+
     public DbSet<TenantRolePermission> TenantRolePermissions { get; set; }
     public DbSet<Menu> Menus { get; set; }
+    public DbSet<TenantAuditLog> TenantAuditLogs { get; set; }
     public DbSet<TenantDomain> TenantDomains { get; set; }
+
+    public DbSet<Permission> Permissions { get; set; }
 
 
     // DbSet-End
